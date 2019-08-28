@@ -1,0 +1,56 @@
+{% extends 'layout.html' %}
+{% block styles %}
+    {{ super() }}
+    <link href="{{ url_for('static', filename='css/md/md.min.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/md/default.min.css') }}" rel="stylesheet">
+{% endblock styles %}
+
+{% block title %}{{article.title|default}}{% endblock title %}
+
+{% block cover_title %}{{article.title|default}}{% endblock cover_title %}
+
+{% block cover %}{{ url_for('static', filename='img/bg-callout.jpg') }}{% endblock cover %}
+
+{% block content -%}
+    <article>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 offset-lg-2">
+                    <div id="markdown">
+                     {{ article.html_content | safe }}
+                    </div>
+                </div>
+                <div class="col-lg-2">
+                    <div class="catalog">
+                        <p class="directory-title">目录</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </article>
+{%- endblock content %}
+
+{% block scripts %}
+    {{ super() }}
+    <script type="text/javascript">
+        $(function () {
+            var toc = $('.toc');
+            if(toc.length > 0){
+                toc.insertAfter('.directory-title');
+                var height = $('header').height();
+
+                $(document).scroll(function () {
+                    var scroH = $(document).scrollTop();
+
+                    if(scroH > height){
+                        $('.catalog').addClass('roll');
+                    }
+                    else if(scroH < height && $('.catalog').hasClass('roll'))
+                    {
+                        $('.catalog').removeClass('roll');
+                    }
+                })
+            };
+        });
+    </script>
+{% endblock scripts %}

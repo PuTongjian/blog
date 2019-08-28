@@ -1,0 +1,37 @@
+{% extends 'layout.html' %}
+
+{% block title %}文章{% endblock title %}
+
+{% block cover_title %}文章{% endblock cover_title %}
+
+{% block cover_subheading %}{% endblock cover_subheading %}
+
+{% block cover %}{{ url_for('static', filename='img/portfolio-1.jpg') }}{% endblock cover %}
+
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-md-10 mx-auto">
+                <div id="article-items">
+                </div>
+                <p class="more">加载中...</p>
+                <p class="end">已经到底了</p>
+                <hr>
+            </div>
+            <div class="col-lg-2 col-md-2 mx-auto">
+                <div class="outer">
+                    <div class="content">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock content %}
+
+
+{% block scripts %}
+    {{ super() }}
+    <script src={{ url_for('static', filename='js/blog-articles.min.js' )}}></script>
+{% endblock scripts %}

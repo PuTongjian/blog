@@ -1,0 +1,82 @@
+{% extends 'layout.html' %}
+
+{% block title %}编辑文章{% endblock title %}
+
+{% block styles %}
+    <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+    <link href="https://cdn.bootcss.com/twitter-bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/clean-blog.min.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/blog-editor.min.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='dialog/css/bootstrap-dialog.min.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ url_for('static', filename='vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/md/md.min.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/md/default.min.css') }}" rel="stylesheet">
+{% endblock styles %}
+
+{% block body_attribs %}style="height: 100%; width: 100%"{% endblock body_attribs %}
+
+{% block body %}
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-3 col-md-2 section">
+                <div class="button-div">
+                    <a href="{{ url_for('views.index') }}">返回首页</a>
+                </div>
+                <hr>
+                <div class="add-category">
+                    <div class="add-button">
+                        <i class="fa fa-plus fa-sm">添加版块</i>
+                    </div>
+                    <div class="add-category-info">
+                        <div class="hidden">
+                            <form>
+                                <input type="text" placeholder="请输入板块名..." name="name" class="category-name" maxlength="20" >
+                                <button type="button" class="sm-btn btn-submit"><span>提 交</span></button>
+                                <button type="button" class="sm-btn btn-cancel"><span>取 消</span></button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <ul class="nav" id="category">
+                <!-- 模块列表 -->
+                </ul>
+            </div>
+            <div class="col-sm-4 col-md-3 section">
+                <div class="add-article">
+                    <div class="add-button">
+                        <i class="fa fa-plus-circle fa-lg">添加文章</i>
+                    </div>
+                </div>
+                <ul class="nav" id="article">
+                </ul>
+            </div>
+            <div class="col-sm-5 col-md-7 section">
+                <input type="text" class="title-input" placeholder="文章标题..." maxlength="20"/>
+                <ul class="markdown-toolbar">
+                    <li class="markdown-toolbar-action" data-index="0">
+                        <a class="far fa-paper-plane fa-lg" data-action="compile" title="发布更新"></a>
+                    </li>
+                    <li class="markdown-toolbar-action" data-index="1">
+                        <a class="far fa-save fa-lg" data-action="save" title="保存"></a>
+                    </li>
+                    <li class="markdown-toolbar-action" data-index="2">
+                        <a class="fas fa-eye fa-lg" data-action="to-preview" title="预览"></a>
+                    </li>
+                </ul>
+                <textarea id="arthur-editor" class="markdown-editor" placeholder="这里创作你的文章"></textarea>
+                <div class="markdown-preview hidden"></div>
+            </div>
+        </div>
+    </div>
+
+    {% block scripts %}
+        {{ super() }}
+        <script src={{ url_for('static', filename='js/blog-editor.min.js' )}}></script>
+
+        <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://cdn.bootcss.com/twitter-bootstrap/3.3.5/js/bootstrap.min.js"></script>
+        <script src={{ url_for('static', filename='dialog/js/bootstrap-dialog.min.js' )}}></script>
+    {%- endblock scripts %}
+{% endblock body %}
+

@@ -1,0 +1,50 @@
+{% extends 'layout.html' %}
+
+{% block cover_title %} 登录 {% endblock cover_title %}
+
+{% block cover_subheading %}
+    博客仅限个人使用<br/>
+    有问题随时联系博主<br/>
+{% endblock cover_subheading %}
+
+{% block cover %}{{ url_for('static', filename='img/portfolio-2.jpg') }}{% endblock cover %}
+
+{% block content %}
+  <!-- Main Content -->
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-md-10 mx-auto">
+                <!-- Contact Form - Enter your email address on line 19 of the mail/contact_me.php file to make this form work. -->
+                <!-- WARNING: Some web hosts do not allow emails to be sent through forms to common mail hosts like Gmail or Yahoo. It's recommended that you use a private domain email address! -->
+                <!-- To use the contact form, your site must be on a live web host with PHP! The form will not work locally! -->
+                <form action="" method="POST" name="sentMessage" id="contactForm" novalidate>
+                    {{ form.csrf_token }}
+                    <div class="control-group">
+                        <div class="form-group floating-label-form-group controls">
+                            <label>邮箱地址</label>
+                            <input type="email" name="{{ form.email.name | default('email') }}" class="form-control" placeholder="邮箱地址" id="email" required data-validation-required-message="请输入你的邮箱地址.">
+                            <p class="help-block text-danger"></p>
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <div class="form-group col-xs-12 floating-label-form-group controls">
+                            <label>密码</label>
+                            <input type="password" name="{{ form.password.name | default('password') }}" class="form-control" placeholder="密码" id="phone" required data-validation-required-message="请输入密码.">
+                            <p class="help-block text-danger"></p>
+                        </div>
+                    </div>
+                    <div class="checkbox">
+                        <label>
+                            {{ form.remember_me }} 记住我
+                        </label>
+                    </div>
+                    <br>
+                    <div id="success"></div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary" id="sendMessageButton">登录</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock content %}

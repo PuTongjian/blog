@@ -1,0 +1,123 @@
+{% block doc -%}
+<!DOCTYPE html>
+<html{% block html_attribs %}{% endblock html_attribs %}>
+{%- block html %}
+  <head>
+    {%- block head %}
+        <title>{% block title %}{{title|default}}{% endblock title %}</title>
+
+    {%- block metas %}
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="description" content="">
+        <meta name="author" content="">
+    {%- endblock metas %}
+
+    {% block styles %}
+        <link href="https://cdn.bootcss.com/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+
+        <!-- Custom fonts for this template -->
+        <link href="{{ url_for('static', filename='vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet">
+        <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+        <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+
+        <!-- Custom styles for this template -->
+        <link href="{{ url_for('static', filename='css/clean-blog.min.css') }}" rel="stylesheet">
+    {% endblock styles %}
+
+    {%- endblock head %}
+  </head>
+  <body {% block body_attribs %}{% endblock body_attribs %}>
+    {% block body -%}
+    {% block navbar -%}
+        <!-- Navigation -->
+        <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+            <div class="container">
+                <a class="navbar-brand" href="{{ url_for('views.index') }}">Xiaotong Blog</a>
+                <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                    Menu
+                    <i class="fas fa-bars"></i>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url_for('views.article') }}">文章</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link login active" href="{{ url_for('views.login') }}">登录</a>
+                        </li>
+                        <li class="nav-item logout">
+                            <a class="nav-link" href="{{ url_for('views.logout') }}">退出</a>
+                        </li>
+                        <li class="nav-item write">
+                            <a class="nav-link" target="_blank" href="{{ url_for('views.article_editor') }}">写文章</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    {%- endblock navbar %}
+    {% block header -%}
+        <header class="masthead" style="background-image: url('{% block cover %}{{ url_for('static', filename='img/bg-masthead.jpg') }}{% endblock cover %}')">
+            <div class="overlay"></div>
+            <div class="container">
+              <div class="row">
+                <div class="col-lg-8 col-md-10 mx-auto">
+                  <div class="site-heading">
+                    <h1>{% block cover_title %}{% endblock cover_title %}</h1>
+                    <span class="subheading">{% block cover_subheading %}{% endblock cover_subheading %}</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+        </header>
+    {%- endblock header %}
+
+    {% block content -%}
+    {%- endblock content %}
+    {% block footer -%}
+        <!-- Footer -->
+        <footer>
+            <div class="container">
+              <div class="row">
+                <div class="col-lg-8 col-md-10 mx-auto">
+                  <ul class="list-inline text-center">
+                    <li class="list-inline-item">
+                      <a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=1123207674&site=qq&menu=yes">
+                        <span class="fa-stack fa-lg">
+                          <i class="fas fa-circle fa-stack-2x"></i>
+                          <i class="fab fa-qq fa-stack-1x fa-inverse"></i>
+                        </span>
+                      </a>
+                    </li>
+                    <li class="list-inline-item">
+                      <a target="_blank" href="https://github.com/laughoutloud61">
+                        <span class="fa-stack fa-lg">
+                          <i class="fas fa-circle fa-stack-2x"></i>
+                          <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+                        </span>
+                      </a>
+                    </li>
+                  </ul>
+                  <p class="copyright text-muted">Copyright &copy; Xiaotong Website 2019</p>
+                </div>
+              </div>
+            </div>
+        </footer>
+    {%- endblock footer %}
+
+
+    {% block scripts %}
+        <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://cdn.bootcss.com/twitter-bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+        <!-- Custom scripts for this template -->
+        <script src={{ url_for('static', filename='js/clean-blog.min.js' )}}></script>
+    {%- endblock scripts %}
+    {%- endblock body %}
+  </body>
+{%- endblock html %}
+</html>
+{% endblock doc -%}
+
+
+
