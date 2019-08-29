@@ -32,7 +32,7 @@ class Article(Base):
     @classmethod
     def get_articles_with_paging(cls, page: int, num: int, category_id: int = None):
         if category_id:
-            return cls.query.filter_by(category_id=category_id).paginate(page, num)
+            return cls.query.filter_by(category_id=category_id, sharing_status=ShareStatus.shared.value).paginate(page, num)
         return cls.query.filter_by().paginate(page, num)
 
     @classmethod
