@@ -112,7 +112,7 @@ def upload_images():
         :return
         {'image_url'}
     """
-    resp = requests.post('http://127.0.0.1/upload/upload_images', data={'image': request.data})
+    resp = requests.post('http://47.103.198.17/upload/upload_images', data={'image': request.data})
     text = json.loads(resp.text)
     return jsonify(text) if resp.status_code == 200 else ServerException()
 
