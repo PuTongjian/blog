@@ -6,7 +6,7 @@ import json
 from app.libs.redprint import RedPrint
 from app.libs.cahce import cache
 from app.libs.limiter import limiter
-from app.libs.api_exceptions import Success
+from app.libs.api_exceptions import Success, ServerException
 from app.models import db, Article
 from app.validators import ArticleValidator
 from app.view_models import ArticleViewModel, ArticleViewModelCollection
@@ -112,9 +112,9 @@ def upload_images():
         :return
         {'image_url'}
     """
-    resp = requests.post('http://127.0.0.1:5000/upload/upload_images', data={'image': request.data})
+    resp = requests.post('http://47.103.198.17/upload/upload_images', data={'image': request.data})
     text = json.loads(resp.text)
-    return jsonify(text)
+    return jsonify(text) if resp.status_code == 200 else ServerException()
 
 
 @api.route('/content/html', methods=['POST'])
