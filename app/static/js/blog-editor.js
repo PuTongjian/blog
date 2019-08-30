@@ -457,12 +457,16 @@ function delete_article() {
                     data: JSON.stringify({'id': article_id}),
                     success: function (data) {
                         select_article.remove();
-                        $('ul#article > li:first').trigger('click');
+                        if($('ul#article > li:first').length > 0) {
+                            $('ul#article > li:first').trigger('click');
+                        }
+                        else {
+                            $('.col-md-7').hide();
+                        }
                         dialogRef.close();
 
                         var category_id = $('#category > .item-selected').attr('data-id');
                         delete _articles[category_id][article_id];
-                        console.log(_articles);
                         delete _article_contents[article_id];
                     },
                     error: function () {

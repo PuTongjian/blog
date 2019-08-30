@@ -5,7 +5,6 @@ import json
 
 from app.libs.redprint import RedPrint
 from app.libs.cahce import cache
-from app.libs.limiter import limiter
 from app.libs.api_exceptions import Success, ServerException
 from app.models import db, Article
 from app.validators import ArticleValidator
@@ -16,7 +15,6 @@ api = RedPrint('article')
 
 
 @api.route('', methods=['POST'])
-@limiter.limit('1/second')
 @login_required
 def create_article():
     """
@@ -197,7 +195,6 @@ def get_article_content():
 
 
 @api.route('', methods=['DELETE'])
-@limiter.limit('1/second')
 @login_required
 def delete_article():
     """
