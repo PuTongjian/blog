@@ -172,7 +172,7 @@ function init() {
                 success: function (data) {
                     var image_name = dt.files[0].name;
                     var url = data.image_url + '/480';
-                    var image = '![!['+ image_name +']('+ url +')';
+                    var image = '!['+ image_name +']('+ url +')';
                     $('.markdown-editor').val($('.markdown-editor').val() + '\n' + image);
                 },
                 error: function () {
