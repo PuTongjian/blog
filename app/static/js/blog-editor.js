@@ -225,7 +225,7 @@ function fill_category(data) {
         if(!$(this).is($('#category > .item-selected'))){
             $('.title-input').val('');
             $('.markdown-editor').val('');
-            $('.markdown-editor').disable = true;
+            $('.col-md-7').hide();
 
 
             $('.category-settings').hide();
@@ -539,6 +539,7 @@ function get_article_content(article_id) {
             success: function (data) {
                 _article_contents[article_id].raw_content = data.content;
                 $('#arthur-editor').val(data.content);
+                $('.col-md-7').show();
             },
             error: function () {
                 console.log('error');
