@@ -397,6 +397,7 @@ function fill_article(data) {
     $('.article-settings').hide();
     $('.article-item').on('click', function () {
         if(!$(this).is($('#article > .item-selected'))) {
+            $('.col-md-7').show();
             if(save_timer){
                 clearTimeout(save_timer);
                 save_timer = null;
@@ -543,7 +544,6 @@ function get_article_content(article_id) {
             success: function (data) {
                 _article_contents[article_id].raw_content = data.content;
                 $('#arthur-editor').val(data.content);
-                $('.col-md-7').show();
             },
             error: function () {
                 console.log('error');
