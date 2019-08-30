@@ -225,7 +225,7 @@ function fill_category(data) {
         if(!$(this).is($('#category > .item-selected'))){
             $('.title-input').val('');
             $('.markdown-editor').val('');
-            $('.markdown-editor').disable();
+            $('.markdown-editor').disable = true;
 
 
             $('.category-settings').hide();
@@ -546,7 +546,7 @@ function get_article_content(article_id) {
         })
     }
     else{
-        $('#arthur-editor').enable();
+        $('.markdown-editor').disable = false;
         $('#arthur-editor').val(content);
     };
 }
