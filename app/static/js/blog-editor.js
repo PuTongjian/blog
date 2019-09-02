@@ -187,6 +187,9 @@ function init() {
             $('a[data-action=save]').trigger('click');
             // 返回false, 防止重复触发copy事件
             return false;
+        }
+        else if(e.keyCode == 9) {
+            return false;
         };
     });
 
