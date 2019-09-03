@@ -17,7 +17,7 @@
 - 文章支持markdown语法，并且提供相关接口，可直接把markdown转化为html文本。
 
 #项目目录概要
-~~~python
+~~~
 |-- blog
     |-- lauch.py               # 项目启动文件
     |-- Pipfile               # pipenv命令的依赖包
