@@ -1,8 +1,7 @@
 import time
-import mistune
+from markdown import Markdown
 
 from app.libs.enums import ArticleOperaEnum
-from app.libs.renderer import Renderer
 
 
 parameters = {
@@ -47,12 +46,18 @@ class ArticleViewModel:
 
     @property
     def html_content(self):
-        renderer = Renderer()
-        markdown = mistune.Markdown(renderer=renderer)
-        md = markdown.parse(self.content)
-        toc = renderer.render_toc(level=3)
+        md = Markdown(
+            extensions=[
+                # 包含 缩写、表格等常用扩展
+                'markdown.extensions.extra',
+                # 语法高亮扩展
+                'markdown.extensions.codehilite',
+                # 允许我们自动生成目录
+                'markdown.extensions.toc'
+            ])
+        _html_content = md.convert(self.content)
 
-        return toc + md
+        return _html_content
 
     def keys(self):
         return self.field
