@@ -16,7 +16,7 @@ def article():
 
 
 @views.route('/detail/<int:article_id>', methods=['GET'])
-@cache.cached(timeout=60*10, key_prefix='article_detail')
+@cache.cached(timeout=60*10)
 def article_detail(article_id):
     article = Article.query.filter_by(id=article_id).first_or_404()
     article.increase_page_views()
