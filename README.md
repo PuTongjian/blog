@@ -76,19 +76,19 @@
 
 - 主页
 
-![index.jpg](http://chuantu.xyz/t6/702/1568619020x977013264.jpg)
+![index.jpg](https://s2.ax1x.com/2019/09/24/ukJRaT.png)
 
 - 文章列表页面，数据采用瀑布式加载
 
-![article.jpg](http://chuantu.xyz/t6/702/1568619052x977013264.jpg)
+![article.jpg](https://s2.ax1x.com/2019/09/24/ukJjiD.png)
 
 - 文章编辑页面，支持文章预览
 
-![editor.jpg](http://chuantu.xyz/t6/702/1568619087x977013264.jpg)
+![editor.jpg](https://s2.ax1x.com/2019/09/24/ukYQe0.png)
 
 - 文章详细页面
 
-![detail.jpg](http://chuantu.xyz/t6/702/1568619143x992245975.jpg)
+![detail.jpg](https://s2.ax1x.com/2019/09/24/ukYHpQ.png)
 
 #补充
 博客网站将一直不定期维护升级，该版块不会详细描述博客搭建的每一个流程，但会记录在搭建博客网站过程中一些值得记录的技术。
